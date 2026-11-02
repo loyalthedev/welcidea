@@ -1,0 +1,62 @@
+{
+  "name": "Inquiry",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Name of the person submitting the inquiry."
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address the person can be reached at."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Talent & Artist Management",
+        "Creative Direction",
+        "Content & Brand Strategy",
+        "Exclusive Partnership"
+      ],
+      "description": "Which area of WELCIDEA the inquiry relates to."
+    },
+    "message": {
+      "type": "string",
+      "description": "The vision brief or message submitted through the inquiry portal."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "in_review",
+        "responded"
+      ],
+      "default": "new",
+      "description": "Internal follow-up status of the inquiry."
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "category",
+    "message"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

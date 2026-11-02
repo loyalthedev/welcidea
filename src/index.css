@@ -1,0 +1,418 @@
+@font-face {
+  font-family: 'Linotype Didot';
+  src: url('https://media.base44.com/files/public/builder-assets/wix-fonts/didot-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ogg';
+  src: url('https://media.base44.com/files/public/builder-assets/wix-fonts/ogg-700-italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2.7%;
+    --foreground: 40 40% 96%;
+    --card: 0 0% 6.7%;
+    --card-foreground: 40 40% 96%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 40 40% 96%;
+    --primary: 45 65% 52%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 40 40% 96%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 40 11% 61%;
+    --accent: 45 45% 17%;
+    --accent-foreground: 45 60% 78%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 45 40% 24%;
+    --input: 45 30% 22%;
+    --ring: 45 65% 52%;
+    --radius: 0.75rem;
+    --chart-1: 45 65% 52%;
+    --chart-2: 40 45% 38%;
+    --chart-3: 45 30% 70%;
+    --chart-4: 30 40% 45%;
+    --chart-5: 50 50% 60%;
+    --font-heading: 'Cinzel', Georgia, 'Times New Roman', serif;
+    --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+    --font-accent: 'Linotype Didot', 'Cinzel', Georgia, serif;
+    --font-script: 'Ogg', 'Cinzel', Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 40 40% 96%;
+    --sidebar-primary: 45 65% 52%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 11%;
+    --sidebar-accent-foreground: 40 40% 96%;
+    --sidebar-border: 45 40% 24%;
+    --sidebar-ring: 45 65% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  section[id] {
+    scroll-margin-top: 7rem;
+  }
+
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.3);
+    color: #f9f6f0;
+  }
+}
+
+@layer utilities {
+  /* Metallic gold gradient text */
+  .gold-text {
+    background-image: linear-gradient(
+      100deg,
+      #9a6f1a 0%,
+      #d4af37 22%,
+      #f5e29c 48%,
+      #d4af37 72%,
+      #9a6f1a 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-animate {
+    animation: gold-pan 9s linear infinite;
+  }
+
+  /* Metallic gold fill for buttons and badges */
+  .gold-surface {
+    background-image: linear-gradient(
+      135deg,
+      #9a6f1a 0%,
+      #d4af37 32%,
+      #f5e29c 52%,
+      #d4af37 70%,
+      #9a6f1a 100%
+    );
+    box-shadow: 0 12px 40px -16px rgba(212, 175, 55, 0.7);
+  }
+
+  /* Glassmorphic surface with a hairline gold border */
+  .glass {
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+
+  .glass-hover {
+    transition:
+      border-color 0.5s ease,
+      box-shadow 0.5s ease,
+      transform 0.5s ease,
+      background-color 0.5s ease;
+  }
+
+  .glass-hover:hover {
+    border-color: rgba(212, 175, 55, 0.8);
+    box-shadow: 0 0 50px -16px rgba(212, 175, 55, 0.65);
+    transform: translateY(-4px);
+  }
+
+  .gold-glow-radial {
+    background-image: radial-gradient(
+      circle at center,
+      rgba(212, 175, 55, 0.18) 0%,
+      rgba(212, 175, 55, 0.05) 42%,
+      rgba(212, 175, 55, 0) 72%
+    );
+  }
+
+  .text-balance-lux {
+    text-wrap: balance;
+  }
+
+  .animate-float {
+    animation: float-y 7s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-360 30s linear infinite;
+  }
+
+  .animate-spin-slower {
+    animation: spin-360 55s linear infinite reverse;
+  }
+
+  .animate-pulse-gold {
+    animation: pulse-gold 6s ease-in-out infinite;
+  }
+
+  .shimmer-sweep {
+    animation: shimmer-sweep 4s ease-in-out infinite;
+  }
+
+  /* ---------- Hover sheen: shimmering light across gold buttons and glass cards ---------- */
+  .gold-surface {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gold-surface::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 60%
+    );
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    opacity: 0;
+  }
+
+  .gold-surface:hover::after {
+    animation: sheen-sweep-x 1.15s ease forwards;
+  }
+
+  .glass-hover {
+    position: relative;
+  }
+
+  .glass-hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(245, 226, 156, 0.16) 50%,
+      transparent 60%
+    );
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .glass-hover:hover::after {
+    animation: sheen-sweep-x 1.3s ease forwards;
+  }
+}
+
+@keyframes sheen-sweep-x {
+  0% {
+    background-position: 100% 0;
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 0;
+    opacity: 0;
+  }
+}
+
+/* ---------- Theme switch: circular reveal spreading from the toggle ---------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+  animation: theme-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-origin-x, 100%) var(--theme-origin-y, 2rem));
+  }
+  to {
+    clip-path: circle(var(--theme-radius, 150vmax) at var(--theme-origin-x, 100%) var(--theme-origin-y, 2rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+@keyframes gold-pan {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: -220% 0;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes spin-360 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-gold {
+  0%,
+  100% {
+    box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 90px 4px rgba(212, 175, 55, 0.35);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-200%) skewX(-20deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  60% {
+    transform: translateX(420%) skewX(-20deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(420%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Floating WhatsApp button ---------- */
+.whatsapp-surface {
+  background-image: linear-gradient(135deg, #34e07c 0%, #25d366 45%, #128c7e 100%);
+  box-shadow: 0 10px 34px -10px rgba(37, 211, 102, 0.7);
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes whatsapp-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+}
+
+/* ---------- Form field surface ---------- */
+.field-surface {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ---------- Light theme ---------- */
+html.light {
+  --background: 42 33% 95%;
+  --foreground: 25 18% 11%;
+  --card: 42 45% 99%;
+  --card-foreground: 25 18% 11%;
+  --popover: 42 45% 99%;
+  --popover-foreground: 25 18% 11%;
+  --primary: 43 60% 33%;
+  --primary-foreground: 45 60% 97%;
+  --secondary: 42 22% 91%;
+  --secondary-foreground: 25 18% 11%;
+  --muted: 42 22% 91%;
+  --muted-foreground: 35 10% 30%;
+  --accent: 45 55% 89%;
+  --accent-foreground: 43 55% 24%;
+  --destructive: 0 60% 40%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 42 30% 82%;
+  --input: 42 30% 82%;
+  --ring: 43 60% 33%;
+}
+
+html.light ::selection {
+  background-color: rgba(212, 175, 55, 0.4);
+  color: #2a2008;
+}
+
+html.light .glass {
+  background-color: rgba(255, 255, 255, 0.74);
+  border-color: rgba(138, 101, 18, 0.38);
+}
+
+html.light .glass-hover:hover {
+  border-color: rgba(138, 101, 18, 0.5);
+  box-shadow: 0 0 50px -16px rgba(138, 101, 18, 0.45);
+}
+
+html.light .gold-text {
+  background-image: linear-gradient(
+    100deg,
+    #513b08 0%,
+    #6b4d0c 22%,
+    #7f5e16 48%,
+    #6b4d0c 72%,
+    #513b08 100%
+  );
+}
+
+html.light .gold-glow-radial {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(212, 175, 55, 0.25) 0%,
+    rgba(212, 175, 55, 0.08) 42%,
+    rgba(212, 175, 55, 0) 72%
+  );
+}
+
+html.light .field-surface {
+  background-color: #ffffff;
+}
